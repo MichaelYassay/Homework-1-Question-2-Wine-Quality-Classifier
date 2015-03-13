@@ -28,4 +28,6 @@ confusionMatrix(preds_knn, wine_test[,10], positive='Good')
 install.packages("pROC")
 dotPlot(varImp(results_knn))
 results_nnet = train(good~.,data=wine_train,method="avNNet",trControl=cv_opts,preProcess="range",tuneLength=5,trace=F,maxit=1000)
-
+https://cloud.githubusercontent.com/assets/10534765/6639308/f045edf4-c964-11e4-8b1a-b06d0155d755.jpeg
+https://cloud.githubusercontent.com/assets/10534765/6639316/f609a398-c964-11e4-824a-13b0b8090b66.jpeg
+https://cloud.githubusercontent.com/assets/10534765/6639320/f9fac6d0-c964-11e4-88cb-9cfc48439c0e.jpeg
