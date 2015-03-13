@@ -1,0 +1,76 @@
+> summary(wine)
+ fixed.acidity    volatile.acidity  citric.acid     residual.sugar     chlorides      
+ Min.   : 3.800   Min.   :0.0800   Min.   :0.0000   Min.   : 0.600   Min.   :0.00900  
+ 1st Qu.: 6.400   1st Qu.:0.2300   1st Qu.:0.2500   1st Qu.: 1.800   1st Qu.:0.03800  
+ Median : 7.000   Median :0.2900   Median :0.3100   Median : 3.000   Median :0.04700  
+ Mean   : 7.215   Mean   :0.3397   Mean   :0.3186   Mean   : 5.443   Mean   :0.05603  
+ 3rd Qu.: 7.700   3rd Qu.:0.4000   3rd Qu.:0.3900   3rd Qu.: 8.100   3rd Qu.:0.06500  
+ Max.   :15.900   Max.   :1.5800   Max.   :1.6600   Max.   :65.800   Max.   :0.61100  
+ free.sulfur.dioxide total.sulfur.dioxide    density             pH          sulphates     
+ Min.   :  1.00      Min.   :  6.0        Min.   :0.9871   Min.   :2.720   Min.   :0.2200  
+ 1st Qu.: 17.00      1st Qu.: 77.0        1st Qu.:0.9923   1st Qu.:3.110   1st Qu.:0.4300  
+ Median : 29.00      Median :118.0        Median :0.9949   Median :3.210   Median :0.5100  
+ Mean   : 30.53      Mean   :115.7        Mean   :0.9947   Mean   :3.219   Mean   :0.5313  
+ 3rd Qu.: 41.00      3rd Qu.:156.0        3rd Qu.:0.9970   3rd Qu.:3.320   3rd Qu.:0.6000  
+ Max.   :289.00      Max.   :440.0        Max.   :1.0390   Max.   :4.010   Max.   :2.0000  
+    alcohol         quality        color          white          good     
+ Min.   : 8.00   Min.   :3.000   red  :1599   Min.   :0.0000   Bad :2384  
+ 1st Qu.: 9.50   1st Qu.:5.000   white:4898   1st Qu.:1.0000   Good:4113  
+ Median :10.30   Median :6.000                Median :1.0000              
+ Mean   :10.49   Mean   :5.818                Mean   :0.7539              
+ 3rd Qu.:11.30   3rd Qu.:6.000                3rd Qu.:1.0000              
+ Max.   :14.90   Max.   :9.000                Max.   :1.0000  
+
+> results_knn
+k-Nearest Neighbors 
+
+5199 samples
+   9 predictor
+   2 classes: 'Bad', 'Good' 
+
+Pre-processing: re-scaling to [0, 1] 
+Resampling: Cross-Validated (10 fold) 
+
+Summary of sample sizes: 4679, 4679, 4680, 4679, 4679, 4679, ... 
+
+Resampling results across tuning parameters:
+
+  k    Accuracy   Kappa      Accuracy SD  Kappa SD  
+    3  0.7501410  0.4541242  0.01816226   0.04101109
+    5  0.7453303  0.4394779  0.01226335   0.02751567
+    7  0.7497604  0.4474330  0.01928239   0.04280454
+    9  0.7470711  0.4403542  0.01550372   0.03665193
+   11  0.7484121  0.4442899  0.01882628   0.04142854
+   25  0.7489916  0.4426266  0.01707053   0.03955129
+   51  0.7434095  0.4272287  0.01763363   0.04030974
+  101  0.7420622  0.4186824  0.01819025   0.04225610
+
+Accuracy was used to select the optimal model using  the largest value.
+The final value used for the model was k = 3.
+
+> confusionMatrix(preds_knn, wine_test[,10], positive='Good')
+Confusion Matrix and Statistics
+
+          Reference
+Prediction Bad Good
+      Bad  285  163
+      Good 191  659
+                                          
+               Accuracy : 0.7273          
+                 95% CI : (0.7022, 0.7513)
+    No Information Rate : 0.6333          
+    P-Value [Acc > NIR] : 4.298e-13       
+                                          
+                  Kappa : 0.4055          
+ Mcnemar's Test P-Value : 0.1513          
+                                          
+            Sensitivity : 0.8017          
+            Specificity : 0.5987          
+         Pos Pred Value : 0.7753          
+         Neg Pred Value : 0.6362          
+             Prevalence : 0.6333          
+         Detection Rate : 0.5077          
+   Detection Prevalence : 0.6549          
+      Balanced Accuracy : 0.7002          
+                                          
+       'Positive' Class : Good  
